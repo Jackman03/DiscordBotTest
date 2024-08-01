@@ -28,6 +28,11 @@ async def Ping(ctx):
     await ctx.send("Pong")
     LogCommand("Ping",{ctx.author.name})
 
+@client.command()
+async def Help(ctx):
+    await ctx.send("This is the list of commands:")
+    LogCommand("Help",{ctx.author.name})
+
 
 #hello command
 @client.command()
@@ -35,12 +40,6 @@ async def Hello(ctx):
     await ctx.send(f"Hello {ctx.author.name}")
     LogCommand("Hello",{ctx.author.name})
     
-
-#time command
-@client.command()
-async def Time(ctx):
-    CurTime = dt.datetime.now()
-    await ctx.send(f'The current time is: {CurTime}')
 
 #user has joined event
 @client.event
