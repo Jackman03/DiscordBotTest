@@ -41,7 +41,7 @@ async def Help(ctx):
 async def Wiki(ctx):
     baseurl = "https://en.wikipedia.org/wiki/Special:Random"
     r = requests.get(baseurl)
-    
+    #uses the requests libary to send a http get to the url, then sends back a random article
 
     await ctx.send(r.url)
     LogCommand("Wiki",{ctx.author.name})
