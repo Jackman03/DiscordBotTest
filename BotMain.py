@@ -4,7 +4,7 @@ from discord.ext import commands
 import os
 from dotenv import load_dotenv
 from BotLogs import *
-
+import requests
 def Configure():
     load_dotenv()
 
@@ -31,8 +31,21 @@ async def Ping(ctx):
 @client.command()
 async def Help(ctx):
     await ctx.send("This is the list of commands:")
+    await ctx.send("!Ping - Displays Pong as a reply")
+    await ctx.send("!Hello - Says hello to the user")
+    await ctx.send("!Wiki - Gets a random wikipedia article")
     LogCommand("Help",{ctx.author.name})
 
+#gets a random wikipedia article
+@client.command()
+async def Wiki(ctx):
+    baseurl = "https://en.wikipedia.org/wiki/Special:Random"
+    r = requests.get(baseurl)
+    
+
+    await ctx.send(r.url)
+    LogCommand("Wiki",{ctx.author.name})
+    
 
 #hello command
 @client.command()
